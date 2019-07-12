@@ -2,7 +2,24 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get(`https://api.github.com/users/<your name>`)
+axios.get(`https://api.github.com/users/erika-vazquez`)
+.then(data => {
+  // 1. (see above)
+  // Handles Success: here's where we get the results from server
+  console.log('response', data)
+  const images = data.data.message
+  //images.forEach(imageUrl => {
+    // 2. (see above)
+   // const element = createDogCard(imageUrl, breed)
+    // 3. (see above)
+   // entry.appendChild(element)
+  //})
+})
+.catch(error => {
+  // Handles failure:
+  console.log('The dogs API is currently down, try again later', error)
+})
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -47,6 +64,40 @@ const followersArray = [];
 </div>
 
 */
+function createGithubCard(imageUrl, realName, userName, userLocation,
+   gitAddress, userFollowers, userFollowing, userBio ) {
+  // create the elements
+  const card = document.createElement('div')
+  const img = document.createElement('img')
+  const name = document.createElement('h3')
+  const usersname = document.createElement('p')
+  const location = document.createElement('p')
+  const address = document.createElement('a')
+  const followers = document.createElement('p')
+  const following = document.createElement('p')
+  const bio = document.createElement('p')
+
+  // set the styles !!!!!!!!!
+  //card.classList.add('dog-card')
+//  img.classList.add('dog-image')
+  
+  // set the content
+  img.src = imageUrl
+  title.textContent = `Breed: ${breed}`
+  
+  // put together
+  card.appendChild(img)
+  card.appendChild(title)
+  return card
+}
+
+
+
+
+
+
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
