@@ -56,7 +56,7 @@ axios.get(`https://api.github.com/users/${user}/followers`)
   console.log('The API is currently down, try again later', error)
 })
 
-//const followersArray = [];
+//const followersArray = []; 
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -77,6 +77,7 @@ axios.get(`https://api.github.com/users/${user}/followers`)
 </div>
 
 */
+//function that accepts a single object as its only argument
 function createGithubCard(obj) {
   // create the elements
   const card = document.createElement('div')
@@ -91,7 +92,7 @@ function createGithubCard(obj) {
   const following = document.createElement('p')
   const bio = document.createElement('p')
 
-  // set the styles !!!!!!!!!
+  // set the styles
 card.classList.add('card')
 cardInfo.classList.add('card-info')
 name.classList.add('name')
