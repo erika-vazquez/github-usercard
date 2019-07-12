@@ -2,12 +2,15 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get(`https://api.github.com/users/erika-vazquez`)
+const user = 'erika-vazquez'
+axios.get(`https://api.github.com/users/${user}`)
 .then(data => {
   // 1. (see above)
   // Handles Success: here's where we get the results from server
+  const userArr = data.data
+  const userObj = createGithubCard(userArr)
   console.log('response', data)
-  const images = data.data.message
+
   //images.forEach(imageUrl => {
     // 2. (see above)
    // const element = createDogCard(imageUrl, breed)
@@ -17,7 +20,7 @@ axios.get(`https://api.github.com/users/erika-vazquez`)
 })
 .catch(error => {
   // Handles failure:
-  console.log('The dogs API is currently down, try again later', error)
+  console.log('The API is currently down, try again later', error)
 })
 
 
@@ -64,35 +67,50 @@ const followersArray = [];
 </div>
 
 */
-function createGithubCard(imageUrl, realName, userName, userLocation,
-   gitAddress, userFollowers, userFollowing, userBio ) {
+function createGithubCard(obj) {
   // create the elements
   const card = document.createElement('div')
   const img = document.createElement('img')
+  const cardInfo = document.createElement('div')
   const name = document.createElement('h3')
-  const usersname = document.createElement('p')
+  const userName = document.createElement('p')
   const location = document.createElement('p')
-  const address = document.createElement('a')
+  const profile = document.createElement('p')
+  const anchor = document.createElement('p')
   const followers = document.createElement('p')
   const following = document.createElement('p')
   const bio = document.createElement('p')
 
   // set the styles !!!!!!!!!
-  //card.classList.add('dog-card')
 //  img.classList.add('dog-image')
+card.classList.add('card')
+cardInfo.classList.add('card-info')
+name.classList.add('name')
+userName.classList.add('username')
   
   // set the content
-  img.src = imageUrl
-  title.textContent = `Breed: ${breed}`
+  //img.src = imageUrl
+  //name.textContent = `Name: ${realName}`
+  //console.log(name.textContent)
+
   
-  // put together
+  // put together -html structure
   card.appendChild(img)
-  card.appendChild(title)
+  card.appendChild(cardInfo)
+  cardInfo.appendChild(name)
+  cardInfo.appendChild(userName)
+  cardInfo.appendChild(location)
+  cardInfo.appendChild(profile)
+  profile.appendChild(anchor)
+  cardInfo.appendChild(followers)
+  cardInfo.appendChild(following)
+  cardInfo.appendChild(bio)
+
+  
   return card
 }
 
-
-
+createGithubCard()
 
 
 
